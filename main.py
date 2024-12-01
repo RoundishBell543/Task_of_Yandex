@@ -3,7 +3,7 @@ import io
 import random
 from PyQt6 import uic
 from PyQt6.QtGui import QPainter, QColor
-from PyQt6.QtWidgets import  QApplication, QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow
 
 template ="""<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
@@ -47,7 +47,7 @@ class MyWidget(QMainWindow):
         uic.loadUi(f, self)
         self.do_paint = False
         self.pushButton.clicked.connect(self.paint)
-        # Обратите внимание: имя элемента такое же как в QTDesigner
+
 
     def paintEvent(self, event):
         if self.do_paint:
@@ -62,7 +62,10 @@ class MyWidget(QMainWindow):
         self.update()
     def draw_flag(self, qp):
         num = random.randrange(1, 400)
-        qp.setBrush(QColor(255, 255, 0))
+        R = random.randrange(1, 255)
+        G = random.randrange(1, 255)
+        B = random.randrange(1, 255)
+        qp.setBrush(QColor(R, G, B))
         qp.drawEllipse(300, 100, num, num)
 
 
